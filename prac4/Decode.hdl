@@ -27,36 +27,23 @@ CHIP Decode {
 PARTS:
     Or(in[15], false, type);
 
-    Not(in[15], notType);
+    Mux(a=false, b=in[12], sel=type, out=a);
 
-    And(notType, true, d1);
-    And(notType, false, d2);
-    And(notType, false, d3);
-    And(notType, false, a);
-    And(notType, false, c1);
-    And(notType, false, c2);
-    And(notType, false, c3);
-    And(notType, false, c4);
-    And(notType, false, c5);
-    And(notType, false, c6);
-    And(notType, false, j1);
-    And(notType, false, j2);
-    And(notType, false, j3);
+    Mux(a=false, b=in[11], sel=type, out=c1);
+    Mux(a=false, b=in[10], sel=type, out=c2);
+    Mux(a=false, b=in[9],  sel=type, out=c3);
+    Mux(a=false, b=in[8],  sel=type, out=c4);
+    Mux(a=false, b=in[7],  sel=type, out=c5);
+    Mux(a=false, b=in[6],  sel=type, out=c6);
 
-    And(type, in[12], a);
-    And(type, in[11], c1);
-    And(type, in[10], c2);
-    And(type, in[9],  c3);
-    And(type, in[8],  c4);
-    And(type, in[7],  c5);
-    And(type, in[6],  c6);
+    Mux(a=true,  b=in[5], sel=type, out=d1);
+    Mux(a=false, b=in[4], sel=type, out=d2);
+    Mux(a=false, b=in[3], sel=type, out=d3);
 
-    And(type, in[5], d1);
-    And(type, in[4], d2);
-    And(type, in[3], d3);
 
-    And(type, in[2], j1);
-    And(type, in[1], j2);
-    And(type, in[0], j3);
+    Mux(a=false, b=in[2], sel=type, out=j1);
+    Mux(a=false, b=in[1], sel=type, out=j2);
+    Mux(a=false, b=in[0], sel=type, out=j3);
 }
+
 
