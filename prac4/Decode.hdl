@@ -25,25 +25,38 @@ CHIP Decode {
         j1,j2,j3;           // Jump wires
 
 PARTS:
-    Or(a=in[15], b=false, out=type);
+    Or(in[15], false, type);
 
-    Not(in=type, out=isA);
+    Not(in[15], notType);
 
-    Or(a=isA, b=in[5], out=d1); 
+    And(notType, true, d1);
+    And(notType, false, d2);
+    And(notType, false, d3);
+    And(notType, false, a);
+    And(notType, false, c1);
+    And(notType, false, c2);
+    And(notType, false, c3);
+    And(notType, false, c4);
+    And(notType, false, c5);
+    And(notType, false, c6);
+    And(notType, false, j1);
+    And(notType, false, j2);
+    And(notType, false, j3);
 
-    And(a=type, b=in[12], out=a);
+    And(type, in[12], a);
+    And(type, in[11], c1);
+    And(type, in[10], c2);
+    And(type, in[9],  c3);
+    And(type, in[8],  c4);
+    And(type, in[7],  c5);
+    And(type, in[6],  c6);
 
-    And(a=type, b=in[11], out=c1);
-    And(a=type, b=in[10], out=c2);
-    And(a=type, b=in[9],  out=c3);
-    And(a=type, b=in[8],  out=c4);
-    And(a=type, b=in[7],  out=c5);
-    And(a=type, b=in[6],  out=c6);
+    And(type, in[5], d1);
+    And(type, in[4], d2);
+    And(type, in[3], d3);
 
-    And(a=type, b=in[4], out=d2);
-    And(a=type, b=in[3], out=d3);
-
-    And(a=type, b=in[2], out=j1);
-    And(a=type, b=in[1], out=j2);
-    And(a=type, b=in[0], out=j3);
+    And(type, in[2], j1);
+    And(type, in[1], j2);
+    And(type, in[0], j3);
 }
+
